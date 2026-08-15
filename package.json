@@ -1,0 +1,24 @@
+{
+  "name": "world-studio-engine-proof-00",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "proof00": "node src/proof00/cli.ts",
+    "world:model:demo": "node src/world-model/cli.ts acceptance",
+    "world:acceptance": "node src/world-model/cli.ts acceptance",
+    "world:evolve": "node src/world-model/cli.ts acceptance",
+    "studio": "node src/studio/server.ts",
+    "test:browser": "node test/browser-acceptance.ts",
+    "acceptance:fresh": "node src/studio/acceptance.ts",
+    "prototype:proof01a": "node src/prototypes/proof01a/cli.ts",
+    "prototype:proof01a:web": "node src/prototypes/proof01a-web/server.ts",
+    "prototype:proof01b": "node src/prototypes/proof01b-causal-phase/cli.ts",
+    "prototype:proof01b:web": "node src/prototypes/proof01a-web/server.ts"
+  }
+}

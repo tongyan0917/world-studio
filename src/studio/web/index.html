@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>World Studio</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">W</div><div><strong>World Studio</strong><span data-i18n="brand.tagline">因果创作工作区</span></div></div>
+      <button id="new-world" class="button primary full" data-i18n="action.createWorld">＋ 创建 World</button>
+      <div class="sidebar-label" data-i18n="sidebar.worlds">World 列表</div>
+      <div id="world-list" class="world-list" aria-label="World 切换器" data-i18n-aria-label="sidebar.worldSwitcher"></div>
+      <div class="sidebar-spacer"></div>
+      <div class="authority-note"><span class="pulse"></span><div><strong data-i18n="authority.title">本地权威</strong><small data-i18n="authority.note">Kernel 提交，模型只提议。</small></div></div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="context">
+          <div id="world-kicker" class="kicker" data-i18n="context.selectWorld">选择一个 World</div>
+          <h1 id="world-title">World Studio</h1>
+          <div id="world-summary" class="summary" data-i18n="context.defaultSummary">探索可能历史的本地优先工作区。</div>
+        </div>
+        <div class="top-actions">
+          <div class="locale-switch" role="group" aria-label="界面语言" data-i18n-aria-label="locale.switcher">
+            <button id="locale-zh" class="locale-option active" type="button" data-locale="zh-CN" aria-pressed="true">中文</button>
+            <button id="locale-en" class="locale-option" type="button" data-locale="en" aria-pressed="false">EN</button>
+          </div>
+          <label class="search"><span>⌕</span><input id="global-search" type="search" placeholder="搜索当前 World…" data-i18n-placeholder="search.world" autocomplete="off"></label>
+          <button id="export-book" class="button" disabled data-i18n="action.exportBook">导出设定集</button>
+        </div>
+      </header>
+
+      <nav class="tabs" aria-label="工作区视图" data-i18n-aria-label="nav.views">
+        <button class="tab active" data-view="explore" data-i18n="nav.explore">探索</button>
+        <button class="tab" data-view="timeline" data-i18n="nav.timeline">时间线</button>
+        <button class="tab" data-view="wiki" data-i18n="nav.wiki">Wiki</button>
+        <button class="tab" data-view="evolve" data-i18n="nav.evolve">演化</button>
+        <button class="tab" data-view="history" data-i18n="nav.history">历史实验室</button>
+        <button class="tab" data-view="author" data-i18n="nav.author">创作</button>
+      </nav>
+
+      <div id="empty-state" class="empty-state">
+        <div class="orb"></div>
+        <h2 data-i18n="empty.title">选择一个 World 开始</h2>
+        <p data-i18n="empty.body">查看已验收的 World，或从完整数据定义创建一个新 World，无需修改源代码。</p>
+      </div>
+
+      <section id="view-explore" class="view hidden">
+        <div id="stats" class="stat-grid"></div>
+        <div class="split-grid wide-left">
+          <article class="panel graph-panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="explore.graphEyebrow">知识图谱</span><h2 data-i18n="explore.graphTitle">World 关系</h2></div><span id="graph-count" class="meta"></span></div><div id="graph" class="graph"></div></article>
+          <article class="panel inspector-panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="explore.inspectorEyebrow">检查器</span><h2 id="inspector-title" data-i18n="explore.selectObject">选择对象</h2></div></div><div id="inspector" class="inspector-empty" data-i18n="explore.clickObject">点击图节点或下方实体。</div></article>
+        </div>
+        <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="explore.objects">对象</span><h2 data-i18n="explore.objectTypes">人物、组织、制度与事件</h2></div><label class="mini-search"><input id="entity-filter" type="search" placeholder="筛选对象" data-i18n-placeholder="explore.filter"></label></div><div id="entity-groups" class="entity-groups"></div></article>
+        <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="explore.geography">地理</span><h2 data-i18n="explore.mapTitle">因果地图</h2></div><span class="meta" data-i18n="explore.imagesOptional">图片可选，仅作视觉参考</span></div><div id="map" class="map"></div></article>
+      </section>
+
+      <section id="view-timeline" class="view hidden">
+        <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="timeline.eyebrow">多尺度账本</span><h2 data-i18n="timeline.title">可能历史</h2></div><span id="timeline-run" class="meta"></span></div><div id="timeline" class="timeline"></div></article>
+      </section>
+
+      <section id="view-wiki" class="view hidden">
+        <div class="split-grid wiki-layout">
+          <aside class="panel wiki-index"><div class="panel-head"><div><span class="eyebrow" data-i18n="wiki.eyebrow">Markdown Wiki</span><h2 data-i18n="wiki.pages">页面</h2></div><button id="wiki-new" class="icon-button" title="新建页面" data-i18n-title="wiki.newTitle">＋</button></div><input id="wiki-search" class="field" type="search" placeholder="搜索标题、正文和标签" data-i18n-placeholder="wiki.search"><div id="wiki-list" class="wiki-list"></div></aside>
+          <article class="panel wiki-editor"><div class="wiki-fields"><input id="wiki-title" class="field title-field" placeholder="页面标题" data-i18n-placeholder="wiki.pageTitle"><input id="wiki-slug" class="field" placeholder="page-slug" data-i18n-placeholder="wiki.slug"><input id="wiki-tags" class="field" placeholder="标签，用逗号分隔" data-i18n-placeholder="wiki.tags"></div><textarea id="wiki-markdown" class="markdown-editor" placeholder="# 页面标题&#10;&#10;用 [[标题]] 链接其他页面，并添加 #标签。" data-i18n-placeholder="wiki.markdownPlaceholder"></textarea><div class="editor-actions"><span id="wiki-revision" class="meta" data-i18n="wiki.newPage">新页面</span><button id="wiki-save" class="button primary" data-i18n="wiki.save">保存页面</button></div></article>
+          <aside class="panel wiki-preview"><div class="panel-head"><div><span class="eyebrow" data-i18n="wiki.preview">预览</span><h2 data-i18n="wiki.rendered">渲染内容</h2></div></div><div id="wiki-rendered" class="markdown-body"></div><div class="backlink-box"><h3 data-i18n="wiki.backlinks">反向链接</h3><div id="wiki-backlinks" class="backlinks" data-i18n="wiki.noBacklinks">暂无反向链接。</div></div></aside>
+        </div>
+      </section>
+
+      <section id="view-evolve" class="view hidden">
+        <div class="split-grid">
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="evolve.controls">因果控制</span><h2 data-i18n="evolve.run">运行演化</h2></div><span id="run-status" class="status" data-i18n="evolve.noControl">暂无控制器</span></div><label class="label"><span data-i18n="evolve.seed">种子</span><input id="run-seed" class="field" value="creator-workspace-v1"></label><div class="button-row"><button id="run-start" class="button primary" data-i18n="evolve.start">开始运行</button><button id="run-step" class="button" disabled data-i18n="evolve.step">推进边界</button><button id="run-pause" class="button" disabled data-i18n="evolve.pause">安全暂停</button><button id="run-resume" class="button" disabled data-i18n="evolve.resume">继续</button><button id="run-complete" class="button" disabled data-i18n="evolve.complete">运行至完成</button></div><div id="run-progress" class="run-progress"></div></article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="evolve.proof">执行证明</span><h2 data-i18n="evolve.closure">闭环与来源</h2></div></div><div id="closure" class="closure"></div></article>
+        </div>
+      </section>
+
+      <section id="view-history" class="view hidden">
+        <div class="split-grid">
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="history.branchEyebrow">从当前选择分支</span><h2 data-i18n="history.branchTitle">干预或柔性方向</h2></div></div><div class="form-grid"><label class="label"><span data-i18n="history.object">对象</span><select id="history-object" class="field"></select></label><label class="label"><span data-i18n="history.field">字段</span><select id="history-field" class="field"></select></label><label class="label"><span data-i18n="history.time">World 时间</span><input id="history-time" class="field" type="number" value="1100"></label><label class="label"><span data-i18n="history.mode">模式</span><select id="history-mode" class="field"><option value="intervention" data-i18n="history.intervention">干预</option><option value="soft-guidance" data-i18n="history.softGuidance">柔性方向提示</option></select></label></div><label class="label" id="history-value-wrap"><span data-i18n="history.newValue">新的 JSON 值</span><textarea id="history-value" class="field compact">70</textarea></label><label class="label hidden" id="history-prompt-wrap"><span data-i18n="history.prompt">方向提示</span><textarea id="history-prompt" class="field compact" data-i18n-value="history.promptDefault">探索能够提升韧性、但不保证成功的合理路径。</textarea></label><label class="label"><span data-i18n="history.reason">原因</span><input id="history-reason" class="field" value="创作者从此对象和时间点探索一个有边界的替代方案。" data-i18n-value="history.reasonDefault"></label><div class="button-row"><button id="history-branch" class="button primary" data-i18n="history.create">创建分支并比较</button><button id="history-explain" class="button" data-i18n="history.explain">解释所选值</button></div></article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="history.evidence">只读证据</span><h2 data-i18n="history.comparison">历史比较</h2></div></div><div id="history-result" class="history-result" data-i18n="history.empty">先完成一次运行，再选择对象和 World 时间。</div></article>
+        </div>
+      </section>
+
+      <section id="view-author" class="view hidden">
+        <article class="panel author-panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="author.eyebrow">Creator Definition v1</span><h2 data-i18n="author.title">创作通用 World</h2></div><div class="button-row"><button id="author-template" class="button" data-i18n="author.template">新建模板</button><button id="author-load" class="button" data-i18n="author.load">加载草稿</button><button id="author-inspect" class="button" data-i18n="author.inspect">检查前提</button><button id="author-save" class="button" data-i18n="author.save">保存草稿</button><button id="author-compile" class="button primary" data-i18n="author.compile">编译并验收</button></div></div><p class="muted" data-i18n="author.description">编辑或粘贴一份完整 JSON 定义。每个部分都通过与示例 World 相同的公共 Blueprint → Contract → Instance 路径编译。</p><textarea id="author-json" class="definition-editor" spellcheck="false"></textarea><div id="author-results" class="author-results"></div></article>
+      </section>
+    </main>
+  </div>
+  <div id="busy" class="busy hidden"><div class="spinner"></div><span data-i18n="busy.default">正在提交因果工作…</span></div>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="World Studio Proof 01B：让同时间因果推进、世界历史与权威边界可见的网页原型。"
+    >
+    <title>World Studio · Proof 01B</title>
+    <link rel="stylesheet" href="/prototype/proof01b/styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="/prototype/proof01b?variant=A" aria-label="World Studio Proof 01B 首页">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span>
+            <strong>World Studio</strong>
+            <small>ENGINE PROOF 01B</small>
+          </span>
+        </a>
+        <div class="header-meta">
+          <span class="live-status"><i aria-hidden="true"></i>服务端真实状态机</span>
+          <span class="mono">THROWAWAY PROTOTYPE</span>
+        </div>
+      </header>
+
+      <main id="app-root" class="app-root" aria-live="polite" aria-busy="true">
+        <section class="loading" aria-label="正在载入">
+          <span class="loading-orbit" aria-hidden="true"></span>
+          <p class="eyebrow">正在唤醒世界</p>
+          <h1>读取因果状态…</h1>
+          <p class="muted">服务端正在创建一条临时 Run，并保留它的权威头。</p>
+        </section>
+      </main>
+    </div>
+
+    <noscript>这个原型需要 JavaScript 才能推进世界。</noscript>
+    <script type="module" src="/prototype/proof01b/app.js"></script>
+  </body>
+</html>

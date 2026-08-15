@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "worldId": "world.lantern-delta",
+  "draftId": "draft.main",
+  "version": "1",
+  "metadata": {
+    "title": "Lantern Delta",
+    "summary": "A tidal delta where floodgates, freshwater, glass-reed livelihoods, local institutions, and dangerous luminous tides co-evolve.",
+    "language": "en",
+    "tags": ["delta", "civic fantasy", "climate", "trade"]
+  },
+  "temporal": {
+    "calendarName": "After the First Light",
+    "startYear": 320,
+    "coordinateDescription": "Linear years with century, decade, season, and day frames."
+  },
+  "premises": [
+    "world.change-recorded",
+    "resources.quantified",
+    "resources.materially-rivalrous",
+    "agents.trait-psychology-applicable",
+    "agents.bounded-information-processing",
+    "groups.social-categorization-possible",
+    "organizations.delegated-authority",
+    "institutions.rules-and-practices",
+    "history.investments-can-constrain-later-options",
+    "ecology.environment-affects-settlement",
+    "world.creator-parameters-causal"
+  ],
+  "geography": {
+    "places": [
+      {
+        "id": "tideglass-quay",
+        "name": "Tideglass Quay",
+        "terrain": "low delta islands linked by floodgates and reed causeways",
+        "climate": "warm monsoon with luminous storm tides",
+        "environmentalStress": 41,
+        "carryingCapacity": 5200,
+        "accessibility": 63,
+        "coordinates": { "x": 34, "y": 68 },
+        "image": { "path": "", "caption": "Optional creator reference; never causal authority." }
+      },
+      {
+        "id": "rainvault-uplands",
+        "name": "Rainvault Uplands",
+        "terrain": "porous limestone ridges and covered cisterns",
+        "climate": "cooler rain catchment above the delta",
+        "environmentalStress": 27,
+        "carryingCapacity": 2400,
+        "accessibility": 48,
+        "coordinates": { "x": 72, "y": 24 }
+      }
+    ],
+    "routes": [
+      {
+        "id": "lantern-causeway",
+        "name": "Lantern Causeway",
+        "originPlaceId": "tideglass-quay",
+        "destinationPlaceId": "rainvault-uplands",
+        "capacity": 58,
+        "reliability": 64,
+        "travelTimeDays": 3,
+        "maintenance": 57,
+        "status": "open-with-risk"
+      }
+    ]
+  },
+  "populations": {
+    "settlements": [
+      {
+        "id": "lantern-quay",
+        "name": "Lantern Quay",
+        "placeId": "tideglass-quay",
+        "population": 1380,
+        "foundedYear": 91,
+        "role": "floodgate, glass-reed, and estuary exchange port",
+        "infrastructureState": "western gates are aging but operable",
+        "foodSecurity": 61,
+        "migrationPressure": 38
+      }
+    ],
+    "groups": [
+      {
+        "id": "reedworker-households",
+        "name": "Glass-reed worker households",
+        "placeId": "tideglass-quay",
+        "population": 460,
+        "livelihood": "reed cultivation, furnace work, gate repair, and ferrying",
+        "mobility": 36,
+        "cohesion": 67,
+        "settlementReadiness": 42,
+        "settlementName": "West Gate Ward"
+      }
+    ]
+  },
+  "characters": [
+    {
+      "id": "ilyra-veen",
+      "name": "Ilyra Veen",
+      "placeId": "tideglass-quay",
+      "age": 34,
+      "focal": true,
+      "traits": { "openness": 72, "conscientiousness": 81, "agreeableness": 46 },
+      "wants": ["publish a credible gate-maintenance ledger", "keep the west ward habitable"],
+      "fears": ["a panic closure that strands reedworker families"],
+      "needs": ["share authority without hiding uncertainty"],
+      "beliefs": ["infrastructure promises are political promises"],
+      "narrative": "If the gates fail, the records must show how we chose.",
+      "memories": ["the quiet surge of year 311"],
+      "stress": 43,
+      "agency": 69,
+      "currentPlan": "audit the western sluice before monsoon"
+    },
+    {
+      "id": "tomas-orr",
+      "name": "Tomas Orr",
+      "placeId": "rainvault-uplands",
+      "age": 47,
+      "focal": true,
+      "traits": { "conscientiousness": 64, "agreeableness": 71 },
+      "wants": ["protect upland cistern reserves"],
+      "fears": ["delta authorities commandeering dry-season water"],
+      "needs": ["a compact that survives one bad season"],
+      "beliefs": ["shared water requires visible limits"],
+      "narrative": "Trust is a gate with hinges, not a speech.",
+      "memories": ["the requisition dispute of year 305"],
+      "stress": 37,
+      "agency": 61,
+      "currentPlan": "negotiate a measured release schedule"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "tide-registry",
+      "name": "Tide Registry",
+      "placeId": "tideglass-quay",
+      "declaredGoal": "maintain safe gates and public tidal records",
+      "actualPractice": "prioritizes central quays while bargaining maintenance with ward crews",
+      "resources": ["gate ledgers", "survey skiffs", "repair levy"],
+      "culture": ["measurement", "procedural legitimacy", "quiet bargaining"],
+      "coalitions": ["surveyors", "central merchants", "ward gatekeepers"],
+      "legitimacy": 58,
+      "cohesion": 54,
+      "capacity": 66,
+      "status": "active"
+    },
+    {
+      "id": "reed-ferrymen-union",
+      "name": "Reed and Ferrymen Union",
+      "placeId": "tideglass-quay",
+      "declaredGoal": "secure safe work, fair ferry access, and ward repairs",
+      "actualPractice": "coordinates labour while protecting senior furnace families",
+      "resources": ["repair crews", "ferries", "furnace credit"],
+      "culture": ["mutual aid", "seniority", "public assembly"],
+      "coalitions": ["ferrymen", "reed cutters", "furnace households"],
+      "legitimacy": 63,
+      "cohesion": 71,
+      "capacity": 57,
+      "status": "active"
+    }
+  ],
+  "institutions": [
+    {
+      "id": "rainvault-compact",
+      "name": "Rainvault Compact",
+      "placeId": "rainvault-uplands",
+      "formalRule": "dry-season releases follow measured reservoir bands and recorded delta need",
+      "ruleInUse": "upland keepers delay releases until a Registry surveyor countersigns",
+      "enforcementCapacity": 56
+    }
+  ],
+  "resources": [
+    {
+      "id": "freshwater-reserve",
+      "name": "Rainvault freshwater reserve",
+      "placeId": "rainvault-uplands",
+      "quantity": 48,
+      "capacity": 120,
+      "renewalRate": 7.5,
+      "baselineDemand": 9.2,
+      "accessRegime": "compact releases, upland keeper custody, and emergency gate claims",
+      "priceIndex": 118
+    }
+  ],
+  "relationships": [
+    { "id": "ilyra-registry", "kind": "membership", "fromId": "person:ilyra-veen", "toId": "organization:tide-registry", "role": "chief gate surveyor" },
+    { "id": "ilyra-tomas", "kind": "social", "fromId": "person:ilyra-veen", "toId": "person:tomas-orr", "relation": "technical respect strained by release disputes", "trust": 34 },
+    { "id": "registry-water", "kind": "governance", "fromId": "organization:tide-registry", "toId": "resource:freshwater-reserve", "basis": "Rainvault Compact counter-signature and emergency floodgate authority" },
+    { "id": "quay-reed-trade", "kind": "trade", "fromId": "settlement:lantern-quay", "toId": "population:reedworker-households", "capacity": 52, "reliability": 59, "priceSpread": 111 }
+  ],
+  "information": [
+    {
+      "id": "western-gate-wear",
+      "subjectId": "organization:tide-registry",
+      "predicate": "western-gate-wear-observed",
+      "value": { "confidence": 0.72, "trend": "worsening" },
+      "scope": ["person:ilyra-veen", "organization:tide-registry"],
+      "uncertainty": "inspection missed two submerged hinges"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "luminous-surge",
+      "name": "Luminous surge",
+      "placeId": "tideglass-quay",
+      "kind": "extreme-weather",
+      "baselineFrequencyPerCentury": 9,
+      "triggerCondition": "monsoon tide and weakened western floodgates",
+      "severityBasis": "surge intensity multiplied by exposure, gate condition, and response capacity",
+      "exposures": [
+        { "targetId": "settlement:lantern-quay", "vulnerability": 62 },
+        { "targetId": "resource:freshwater-reserve", "vulnerability": 35 },
+        { "targetId": "person:ilyra-veen", "vulnerability": 44 }
+      ]
+    }
+  ],
+  "theoryPacks": [
+    { "id": "theory.psychology.big-five", "version": "1", "mode": "parameterized", "parameters": { "calibration": "delta-civic" } },
+    { "id": "theory.psychology.bounded-cognition", "version": "1", "mode": "enabled", "parameters": {} },
+    { "id": "theory.social.social-identity", "version": "1", "mode": "enabled", "parameters": {} },
+    { "id": "theory.organization.principal-agent", "version": "1", "mode": "enabled", "parameters": {} },
+    { "id": "theory.institution.rules-in-use", "version": "1", "mode": "enabled", "parameters": {} },
+    { "id": "theory.economy.stock-flow-claims", "version": "1", "mode": "enabled", "parameters": {} },
+    { "id": "theory.history.path-dependence", "version": "1", "mode": "enabled", "parameters": {} },
+    { "id": "theory.ecology.coupled-systems", "version": "1", "mode": "enabled", "parameters": {} }
+  ],
+  "hardRules": [
+    {
+      "id": "bounded-stock",
+      "description": "Freshwater cannot be negative or exceed declared capacity.",
+      "constraint": { "kind": "numeric-range", "nodeTypes": ["resource-stock"], "fieldId": "quantity", "minimum": 0, "maximumFieldId": "capacity" }
+    },
+    {
+      "id": "bounded-population",
+      "description": "Settlement and household populations cannot become negative.",
+      "constraint": { "kind": "numeric-range", "nodeTypes": ["settlement", "population-group"], "fieldId": "population", "minimum": 0 }
+    },
+    {
+      "id": "water-authority",
+      "description": "Only stock-flow and realized hazard mechanisms may change physical freshwater.",
+      "constraint": { "kind": "field-write-authority", "nodeTypes": ["resource-stock"], "fieldId": "quantity", "mechanismIds": ["mechanism.resource-balance", "mechanism.hazard-impact"] }
+    }
+  ],
+  "parameters": {
+    "environmentalVolatility": 0.82,
+    "routeSensitivity": 1.15,
+    "hazardFrequencyMultiplier": 0.9,
+    "organizationAdaptationRate": 1.05,
+    "custom": { "luminousTidesArePhysical": true, "glassReedSalinityTolerance": 0.64 }
+  },
+  "initialState": {
+    "facts": [
+      {
+        "id": "compact-is-contested",
+        "subjectId": "institution:rainvault-compact",
+        "predicate": "publicly-contested",
+        "value": true,
+        "scope": "world",
+        "uncertainty": "no common measure of emergency need"
+      }
+    ]
+  },
+  "extensions": {
+    "nodeTypes": [
+      {
+        "id": "lantern-grid",
+        "description": "A World-specific luminous warning grid whose charge depends on gate maintenance.",
+        "worldSpecific": true,
+        "fields": [
+          { "id": "name", "valueType": "string", "required": true, "causal": false },
+          { "id": "charge", "valueType": "number", "required": true, "causal": true, "unit": "index" },
+          { "id": "warning-threshold", "valueType": "number", "required": true, "causal": true, "unit": "index" }
+        ]
+      }
+    ],
+    "edgeTypes": [
+      {
+        "id": "anchored-at",
+        "description": "Anchors the luminous grid to a place.",
+        "fromTypes": ["lantern-grid"],
+        "toTypes": ["place"],
+        "fields": []
+      }
+    ],
+    "nodes": [
+      { "id": "grid:west-gates", "type": "lantern-grid", "attributes": { "name": "West Gate warning grid", "charge": 57, "warning-threshold": 43 } }
+    ],
+    "edges": [
+      { "id": "edge:grid-at-quay", "type": "anchored-at", "from": "grid:west-gates", "to": "place:tideglass-quay", "attributes": {} }
+    ]
+  }
+}
